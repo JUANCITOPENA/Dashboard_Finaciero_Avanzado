@@ -5,7 +5,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <!-- Opcional: Añade un badge de licencia si aplica -->
 
 ![Screenshot del Dashboard](Screenshot_411.png)
-*(Reemplaza `placeholder_screenshot.png` con una captura de pantalla real o un GIF animado del dashboard en acción)*
 
 ## 🎯 Premisa del Proyecto: Iluminando las Finanzas
 
