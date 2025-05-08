@@ -6,7 +6,7 @@
 
 ![Screenshot del Dashboard](Screenshot_411.png)
 
-## 🎯 Premisa del Proyecto: Iluminando las Finanzas
+## 🎯 Proyecto: las Finanzas
 
 Este proyecto nace de la necesidad fundamental de **transformar datos contables brutos y a menudo complejos 📊 en información financiera clara, comprensible y, sobre todo, accionable**. Resuelve el desafío común de obtener una visión instantánea y dinámica del rendimiento operativo y la posición económica de una entidad, superando las limitaciones de los reportes estáticos.
 
