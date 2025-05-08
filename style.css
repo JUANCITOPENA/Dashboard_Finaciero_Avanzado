@@ -1,105 +1,153 @@
-  /* --- Variables de Color --- */
-        :root {
-            --primary-color: #007bff; --success-color: #28a745; --warning-color: #ffc107;
-            --danger-color: #dc3545; --info-color: #17a2b8; --secondary-color: #6c757d;
+/* --- Variables de Color --- */
+:root {
+    --primary-color: #007bff; --success-color: #28a745; --warning-color: #ffc107;
+    --danger-color: #dc3545; --info-color: #17a2b8; --secondary-color: #6c757d;
 
-            --light-bg: #f4f6f9; --light-card-bg: #ffffff; --light-text-color: #212529;
-            --light-border-color: #dee2e6; --light-table-header-bg: #e9ecef; --light-chart-label-color: '#333';
-            --light-value-positive: var(--success-color); --light-value-negative: var(--danger-color);
+    --light-bg: #f4f6f9; --light-card-bg: #ffffff; --light-text-color: #212529;
+    --light-border-color: #dee2e6; --light-table-header-bg: #e9ecef; --light-chart-label-color: '#333';
+    --light-value-positive: var(--success-color); --light-value-negative: var(--danger-color);
 
-            --dark-bg: #1a1d21; --dark-card-bg: #2c3034; --dark-text-color: #e8eaed;
-            --dark-border-color: #454a4f; --dark-table-header-bg: #343a40; --dark-chart-label-color: '#ccc';
-            --dark-value-positive: #66bb6a; --dark-value-negative: #ef5350;
-        }
-        /* --- Estilos Generales --- */
-        body { font-family: 'Inter', sans-serif; background-color: var(--light-bg); color: var(--light-text-color); transition: background-color 0.3s ease, color 0.3s ease; padding-top: 20px; padding-bottom: 30px; }
-        .main-container { width: 95%; max-width: 1800px; margin: 0 auto; }
-        body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text-color); }
+    --dark-bg: #1a1d21; --dark-card-bg: #2c3034; --dark-text-color: #e8eaed;
+    --dark-border-color: #454a4f; --dark-table-header-bg: #343a40; --dark-chart-label-color: '#ccc';
+    --dark-value-positive: #66bb6a; --dark-value-negative: #ef5350;
+    /* Variables específicas para Footer Dark Mode */
+    --dark-footer-bg: #212529;
+    --dark-footer-text: rgba(255, 255, 255, 0.7);
+    --dark-footer-link-hover: rgba(255, 255, 255, 1);
+}
+/* --- Estilos Generales --- */
+body { font-family: 'Inter', sans-serif; background-color: var(--light-bg); color: var(--light-text-color); transition: background-color 0.3s ease, color 0.3s ease; padding-top: 20px; padding-bottom: 30px; }
+.main-container { width: 85%; max-width: 1800px; margin: 0 auto; }
+body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text-color); }
 
-        /* --- Estilos de Contenedores --- */
-        .kpi-card, .chart-container, .table-container, .filter-section, .executive-summary-container, .financial-statement-container {
-            background-color: var(--light-card-bg); border: 1px solid var(--light-border-color);
-            border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        body.dark-mode .kpi-card, body.dark-mode .chart-container, body.dark-mode .table-container,
-        body.dark-mode .filter-section, body.dark-mode .executive-summary-container, body.dark-mode .financial-statement-container {
-            background-color: var(--dark-card-bg); border-color: var(--dark-border-color); box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
+/* --- Estilos de Contenedores --- */
+.kpi-card, .chart-container, .table-container, .filter-section, .executive-summary-container, .financial-statement-container {
+    background-color: var(--light-card-bg); border: 1px solid var(--light-border-color);
+    border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+     height: 100%; /* Para que las cards en una fila tengan la misma altura si se usa h-100 */
+}
+body.dark-mode .kpi-card, body.dark-mode .chart-container, body.dark-mode .table-container,
+body.dark-mode .filter-section, body.dark-mode .executive-summary-container, body.dark-mode .financial-statement-container {
+    background-color: var(--dark-card-bg); border-color: var(--dark-border-color); box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
 
-        /* --- KPIs --- */
-        .kpi-card { color: white; } .kpi-card h5 { font-size: 0.95rem; margin-bottom: 5px; font-weight: 500; opacity: 0.9; }
-        .kpi-card p { font-size: 1.5rem; font-weight: 600; }
-        .bg-primary-custom { background-color: var(--primary-color); } .bg-success-custom { background-color: var(--success-color); }
-        .bg-warning-custom { background-color: var(--warning-color); color: #333 !important; }
-        .bg-danger-custom { background-color: var(--danger-color); } .bg-info-custom { background-color: var(--info-color); }
-        .bg-secondary-custom { background-color: var(--secondary-color); }
+/* --- KPIs --- */
+.kpi-card { color: white; display: flex; flex-direction: column; justify-content: center; }
+.kpi-card h5 { font-size: 0.9rem; margin-bottom: 5px; font-weight: 500; opacity: 0.9; }
+.kpi-card p { font-size: 1.4rem; font-weight: 600; margin-bottom: 0; }
+.bg-primary-custom { background-color: var(--primary-color); } .bg-success-custom { background-color: var(--success-color); }
+/* CORRECCIÓN DARK MODE: No forzar color oscuro en warning, dejar blanco por defecto */
+.bg-warning-custom  { background-color: var(--warning-color); color: black !important; }
+.bg-danger-custom { background-color: var(--danger-color); } .bg-info-custom { background-color: var(--info-color); }
+.bg-secondary-custom { background-color: var(--secondary-color); }
 
-        /* --- Gráficos y Títulos --- */
-        .chart-container { height: 380px; }
-        h1, h2, h3 { color: inherit; margin-bottom: 20px; font-weight: 600; }
-        h1 { font-size: 1.8rem; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; margin-top:10px;}
-        h1 i, h2 i, h3 i { margin-right: 8px; }
 
-        /* --- Tablas --- */
-        .table-responsive { max-height: 450px; border-radius: 8px; }
-        .table thead th { background-color: var(--light-table-header-bg); color: var(--light-text-color); font-weight: 600; font-size: 0.9rem; transition: background-color 0.3s ease, color 0.3s ease; position: sticky; top: 0; z-index: 10;}
-        body.dark-mode .table thead th { background-color: var(--dark-table-header-bg); color: var(--dark-text-color); }
-        .table th, .table td { vertical-align: middle; border-top-color: var(--light-border-color); font-size: 0.85rem;}
-        body.dark-mode .table th, body.dark-mode .table td { border-top-color: var(--dark-border-color); color: var(--dark-text-color); }
-        .table-hover tbody tr:hover { background-color: rgba(0,0,0,0.04); }
-        body.dark-mode .table-hover tbody tr:hover { background-color: rgba(255,255,255,0.04); }
+    /* --- KPIs --- */
+    .kpi-card { color: white; } .kpi-card h5 { font-size: 0.95rem; margin-bottom: 5px; font-weight: 500; opacity: 0.9; }
+    .kpi-card p { font-size: 1.0rem; font-weight: 600; }
+    .bg-primary-custom { background-color: var(--primary-color); } .bg-success-custom { background-color: var(--success-color); }
+    .bg-warning-custom  { background-color: var(--warning-color); color: white !important; }
+    .bg-danger-custom { background-color: var(--danger-color); } .bg-info-custom { background-color: var(--info-color); }
+    .bg-secondary-custom { background-color: var(--secondary-color); }
 
-        /* --- Tablas Financieras Específicas --- */
-        .financial-statement-container .table td:nth-child(1) { font-weight: 500; }
-        .financial-statement-container .table td:nth-child(2) { text-align: right; }
-        .total-row td { font-weight: bold !important; border-top: 2px solid var(--light-border-color) !important; }
-        body.dark-mode .total-row td { border-top-color: var(--dark-border-color) !important; }
-        .subtotal-row td { font-style: italic; }
+    /* --- Gráficos y Títulos --- */
+    .chart-container { height: 380px; }
+    h1, h2, h3 { color: inherit; margin-bottom: 20px; font-weight: 600; }
+    h1 { font-size: 1.8rem; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; margin-top:10px;}
+    h1 i, h2 i, h3 i { margin-right: 8px; }
 
-        /* --- Semáforo y Emojis (Colores) --- */
-        .value-positive { color: var(--light-value-positive); }
-        .value-negative { color: var(--light-value-negative); }
-        .value-neutral { color: inherit; }
-        body.dark-mode .value-positive { color: var(--dark-value-positive); }
-        body.dark-mode .value-negative { color: var(--dark-value-negative); }
-        .emoji { margin-left: 5px; font-size: 0.9em; }
+    /* --- Tablas --- */
+    .table-responsive { max-height: 450px; border-radius: 8px; }
+    .table thead th { background-color: var(--light-table-header-bg); color: var(--light-text-color); font-weight: 600; font-size: 0.9rem; transition: background-color 0.3s ease, color 0.3s ease; position: sticky; top: 0; z-index: 10;}
+    body.dark-mode .table thead th { background-color: var(--dark-table-header-bg); color: var(--dark-text-color); }
+    .table th, .table td { vertical-align: middle; border-top-color: var(--light-border-color); font-size: 0.85rem;}
+    body.dark-mode .table th, body.dark-mode .table td { border-top-color: var(--dark-border-color); color: var(--dark-text-color); }
+    .table-hover tbody tr:hover { background-color: rgba(0,0,0,0.04); }
+    body.dark-mode .table-hover tbody tr:hover { background-color: rgba(255,255,255,0.04); }
 
-        /* --- Indicador de Tipo de Cuenta --- */
-        .type-Activo { border-left: 3px solid var(--primary-color); } .type-Pasivo { border-left: 3px solid var(--warning-color); }
-        .type-Patrimonio { border-left: 3px solid var(--secondary-color); } .type-Ingreso { border-left: 3px solid var(--success-color); }
-        .type-Gasto { border-left: 3px solid var(--danger-color); }
+    /* --- Tablas Financieras Específicas --- */
+    .financial-statement-container .table td:nth-child(1) { font-weight: 500; }
+    .financial-statement-container .table td:nth-child(2) { text-align: right; }
+    .total-row td { font-weight: bold !important; border-top: 2px solid var(--light-border-color) !important; }
+    body.dark-mode .total-row td { border-top-color: var(--dark-border-color) !important; }
+    .subtotal-row td { font-style: italic; }
 
-        /* --- Interruptor de Tema --- */
-        .theme-switch-wrapper { display: flex; align-items: center; position: fixed; top: 15px; right: 20px; z-index: 1030; }
-        .theme-switch { display: inline-block; height: 24px; position: relative; width: 48px; }
-        .theme-switch input { display:none; }
-        .slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; }
-        .slider:before { background-color: #fff; bottom: 3px; content: ""; height: 18px; left: 3px; position: absolute; transition: .4s; width: 18px; }
-        input:checked + .slider { background-color: var(--primary-color); } input:checked + .slider:before { transform: translateX(24px); }
-        .slider.round { border-radius: 24px; } .slider.round:before { border-radius: 50%; }
-        .theme-switch-wrapper span { margin-left: 10px; font-size: 0.9rem; user-select: none;}
-        body.dark-mode .theme-switch-wrapper span { color: var(--dark-text-color); }
+    /* --- Semáforo y Emojis (Colores) --- */
+    .value-positive { color: var(--light-value-positive); }
+    .value-negative { color: var(--light-value-negative); }
+    .value-neutral { color: inherit; }
+    body.dark-mode .value-positive { color: var(--dark-value-positive); }
+    body.dark-mode .value-negative { color: var(--dark-value-negative); }
+    .emoji { margin-left: 5px; font-size: 0.9em; }
 
-        /* --- Resumen Ejecutivo --- */
-        .executive-summary-container p { font-size: 1rem; line-height: 1.7; margin-bottom: 0.8rem; }
-        .executive-summary-container ul { padding-left: 20px; margin-top: -0.5rem; margin-bottom: 0.8rem; }
-        .executive-summary-container li { margin-bottom: 0.3rem; }
-        .executive-summary-container .highlight { font-weight: 600; padding: 2px 5px; border-radius: 4px; display: inline-block; }
-        .highlight-ingreso { background-color: rgba(40, 167, 69, 0.15); color: #1f7a39; }
-        .highlight-gasto { background-color: rgba(220, 53, 69, 0.15); color: #a52834; }
-        .highlight-beneficio-pos { background-color: rgba(40, 167, 69, 0.15); color: #1f7a39; }
-        .highlight-beneficio-neg { background-color: rgba(220, 53, 69, 0.15); color: #a52834; }
-        .highlight-activo { background-color: rgba(0, 123, 255, 0.15); color: #0056b3; }
-        .highlight-pasivo { background-color: rgba(255, 193, 7, 0.15); color: #b38600; }
-        .highlight-patrimonio { background-color: rgba(108, 117, 125, 0.15); color: #495057; }
-        body.dark-mode .highlight-ingreso { background-color: rgba(129, 199, 132, 0.2); color: var(--dark-value-positive); }
-        body.dark-mode .highlight-gasto { background-color: rgba(239, 154, 154, 0.2); color: var(--dark-value-negative); }
-        body.dark-mode .highlight-beneficio-pos { background-color: rgba(129, 199, 132, 0.2); color: var(--dark-value-positive); }
-        body.dark-mode .highlight-beneficio-neg { background-color: rgba(239, 154, 154, 0.2); color: var(--dark-value-negative); }
-        body.dark-mode .highlight-activo { background-color: rgba(144, 202, 249, 0.2); color: #bbdefb; }
-        body.dark-mode .highlight-pasivo { background-color: rgba(255, 224, 130, 0.2); color: #fff176; }
-        body.dark-mode .highlight-patrimonio { background-color: rgba(189, 189, 189, 0.2); color: #e0e0e0; }
+    /* --- Indicador de Tipo de Cuenta --- */
+    .type-Activo { border-left: 3px solid var(--primary-color); } .type-Pasivo { border-left: 3px solid var(--warning-color); }
+    .type-Patrimonio { border-left: 3px solid var(--secondary-color); } .type-Ingreso { border-left: 3px solid var(--success-color); }
+    .type-Gasto { border-left: 3px solid var(--danger-color); }
 
-        /* --- Filtros --- */
-        .form-control-sm { font-size: 0.85rem; } .filter-section label { font-size: 0.85rem; margin-bottom: .3rem; font-weight: 500; }
+    /* --- Interruptor de Tema --- */
+    .theme-switch-wrapper { display: flex; align-items: center; position: fixed; top: 15px; right: 20px; z-index: 1030; }
+    .theme-switch { display: inline-block; height: 24px; position: relative; width: 48px; }
+    .theme-switch input { display:none; }
+    .slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; }
+    .slider:before { background-color: #fff; bottom: 3px; content: ""; height: 18px; left: 3px; position: absolute; transition: .4s; width: 18px; }
+    input:checked + .slider { background-color: var(--primary-color); } input:checked + .slider:before { transform: translateX(24px); }
+    .slider.round { border-radius: 24px; } .slider.round:before { border-radius: 50%; }
+    .theme-switch-wrapper span { margin-left: 10px; font-size: 0.9rem; user-select: none;}
+    body.dark-mode .theme-switch-wrapper span { color: var(--dark-text-color); }
+
+    /* --- Resumen Ejecutivo --- */
+    .executive-summary-container p { font-size: 1rem; line-height: 1.7; margin-bottom: 0.8rem; }
+    .executive-summary-container ul { padding-left: 20px; margin-top: -0.5rem; margin-bottom: 0.8rem; }
+    .executive-summary-container li { margin-bottom: 0.3rem; }
+    .executive-summary-container .highlight { font-weight: 600; padding: 2px 5px; border-radius: 4px; display: inline-block; }
+    .highlight-ingreso { background-color: rgba(40, 167, 69, 0.15); color: #1f7a39; }
+    .highlight-gasto { background-color: rgba(220, 53, 69, 0.15); color: #a52834; }
+    .highlight-beneficio-pos { background-color: rgba(40, 167, 69, 0.15); color: #1f7a39; }
+    .highlight-beneficio-neg { background-color: rgba(220, 53, 69, 0.15); color: #a52834; }
+    .highlight-activo { background-color: rgba(0, 123, 255, 0.15); color: #0056b3; }
+    .highlight-pasivo { background-color: rgba(255, 193, 7, 0.15); color: #b38600; }
+    .highlight-patrimonio { background-color: rgba(108, 117, 125, 0.15); color: #495057; }
+    body.dark-mode .highlight-ingreso { background-color: rgba(129, 199, 132, 0.2); color: var(--dark-value-positive); }
+    body.dark-mode .highlight-gasto { background-color: rgba(239, 154, 154, 0.2); color: var(--dark-value-negative); }
+    body.dark-mode .highlight-beneficio-pos { background-color: rgba(129, 199, 132, 0.2); color: var(--dark-value-positive); }
+    body.dark-mode .highlight-beneficio-neg { background-color: rgba(239, 154, 154, 0.2); color: var(--dark-value-negative); }
+    body.dark-mode .highlight-activo { background-color: rgba(144, 202, 249, 0.2); color: #bbdefb; }
+    body.dark-mode .highlight-pasivo { background-color: rgba(255, 224, 130, 0.2); color: #fff176; }
+    body.dark-mode .highlight-patrimonio { background-color: rgba(189, 189, 189, 0.2); color: #e0e0e0; }
+
+    /* --- Filtros --- */
+    .form-control-sm { font-size: 0.85rem; } .filter-section label { font-size: 0.85rem; margin-bottom: .3rem; font-weight: 500; }
+
+
+    /* --- Media Queries for Responsiveness --- */
+/* MEJORA RESPONSIVE: Ajustar columnas de filtros y KPIs */
+@media (max-width: 991.98px) { /* Tablets y móviles grandes (md y lg breakpoints de Bootstrap 4) */
+    .filter-section > .col-lg-3, .filter-section > .col-lg-2 { /* Afecta Año, Mes, Tipo, Clasif. */
+        flex: 0 0 50%; max-width: 50%; /* 2 columnas en mediano */
+    }
+    .filter-section > .col-lg-2:last-child { /* Botón Filtrar */
+         flex: 0 0 100%; max-width: 100%; margin-top: 10px; /* Ocupa todo y añade espacio */
+    }
+    .financial-statement-container, .chart-container {
+        margin-bottom: 15px;
+    }
+}
+@media (max-width: 767.98px) { /* Móviles medianos y pequeños (sm breakpoint) */
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.2rem; } h3 { font-size: 1.1rem; }
+    .kpi-card h5 { font-size: 0.85rem; }
+    .kpi-card p { font-size: 1.3rem;}
+    .filter-section > div { /* Todos los filtros en 1 columna */
+        flex: 0 0 100%; max-width: 100%;
+    }
+     .filter-section > div:last-child { margin-top: 15px; } /* Botón también */
+    .table th, .table td { font-size: 0.8rem; white-space: normal; } /* Permitir wrap en móvil */
+    .financial-statement-container .table-responsive { max-height: none; } /* Permitir que tablas crezcan en móvil */
+    .table-responsive { max-height: 350px; }
+}
+@media (max-width: 575.98px) { /* Móviles muy pequeños (xs breakpoint) */
+    .kpi-card p { font-size: 1.1rem; }
+    .executive-summary-container p { font-size: 0.9rem; line-height: 1.6;}
+    .footer .social-icons { margin-top: 0.8rem; }
+}
